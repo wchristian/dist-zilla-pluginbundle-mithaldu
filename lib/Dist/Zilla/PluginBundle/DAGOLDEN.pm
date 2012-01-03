@@ -236,21 +236,15 @@ sub configure {
     ( $self->fake_release ? 'FakeRelease' : 'UploadToCPAN'),       # core
 
   # after release
-  # Note -- NextRelease is here to get the ordering right with
-  # git actions.  It is *also* a file munger that acts earlier
+    'NextRelease',        # core (also munges files)
 
     # commit dirty Changes, dist.ini, README.pod, META.json
-    [ 'Git::Commit' => 'Commit_Dirty_Files' =>
+    [ 'Git::Commit' =>
       {
         allow_dirty => [qw/dist.ini Changes README.pod META.json/]
       }
     ],
     [ 'Git::Tag' => { tag_format => $self->tag_format } ],
-
-    # bumps Changes
-    'NextRelease',        # core (also munges files)
-
-    [ 'Git::Commit' => 'Commit_Changes' => { commit_msg => "bump Changes" } ],
 
     [ 'Git::Push' => { push_to => \@push_to } ],
 
@@ -374,20 +368,16 @@ following dist.ini:
   [UploadToCPAN]      ; uploads to CPAN
 
   ; after release
-  [Git::Commit / Commit_Dirty_Files] ; commit Changes (as released)
+  [NextRelease]
+
+  [Git::Commit] ; commit Changes (as released)
+  allow_dirty = dist.ini
+  allow_dirty = Changes
+  allow_dirty = README.pod
+  allow_dirty = META.json
 
   [Git::Tag]          ; tag repo with custom tag
   tag_format = release-%v
-
-  ; NextRelease acts *during* pre-release to write $VERSION and
-  ; timestamp to Changes and  *after* release to add a new {{$NEXT}}
-  ; section, so to act at the right time after release, it must actually
-  ; come after Commit_Dirty_Files but before Commit_Changes in the
-  ; dist.ini.  It will still act during pre-release as usual
-
-  [NextRelease]
-
-  [Git::Commit / Commit_Changes] ; commit Changes (for new dev)
 
   [Git::Push]         ; push repo to remote
   push_to = origin
