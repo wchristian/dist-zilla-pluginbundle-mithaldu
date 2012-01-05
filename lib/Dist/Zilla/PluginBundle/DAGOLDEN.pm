@@ -43,7 +43,7 @@ use Dist::Zilla::Util::FileGenerator;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-sub mvp_multivalue_args { qw/stopwords gitignore/ }
+sub mvp_multivalue_args { qw/stopwords gitignore exclude_match/ }
 
 has stopwords => (
   is      => 'ro',
@@ -132,6 +132,15 @@ has gitignore => (
   },
 );
 
+has exclude_match => (
+  is      => 'ro',
+  isa     => 'ArrayRef',
+  lazy    => 1,
+  default => sub {
+    exists $_[0]->payload->{exclude_match} ? $_[0]->payload->{exclude_match} : []
+  },
+);
+
 sub old_meta {
   my $meta = try {
     CPAN::Meta->load_file("META.json");
@@ -179,7 +188,7 @@ sub configure {
     $version_provider,
 
   # gather and prune
-    [ GatherDir => { exclude_filename => [qw/README.pod META.json/] }], # core
+    [ GatherDir => { exclude_filename => [qw/README.pod META.json/], exclude_match => $self->exclude_match }], # core
     'PruneCruft',         # core
     'ManifestSkip',       # core
 
@@ -443,6 +452,7 @@ testing a dist.ini without risking a real release.
 * {no_critic} -- omit Test::Perl::Critic tests
 * {no_spellcheck} -- omit Test::PodSpelling tests
 * {gitignore} -- adds entries to be added to .gitignore (can be repeated)
+* {exclude_match} -- regexes to exclude files from the dist (can be repeated)
 
 = SEE ALSO
 
