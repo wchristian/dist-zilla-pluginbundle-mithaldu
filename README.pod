@@ -193,6 +193,10 @@ C<<< no_spellcheck >>> -- omit Test::PodSpelling tests
 
 C<<< gitignore >>> -- adds entries to be added to .gitignore (can be repeated)
 
+=item *
+
+C<<< exclude_match >>> -- regexes to exclude files from the dist (can be repeated)
+
 =back
 
 =head1 SEE ALSO
