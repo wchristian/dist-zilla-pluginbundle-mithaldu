@@ -43,7 +43,7 @@ use Dist::Zilla::Util::FileGenerator;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-sub mvp_multivalue_args { qw/stopwords/ }
+sub mvp_multivalue_args { qw/stopwords gitignore/ }
 
 has stopwords => (
   is      => 'ro',
@@ -123,6 +123,15 @@ has major_version => (
   },
 );
 
+has gitignore => (
+  is      => 'ro',
+  isa     => 'ArrayRef',
+  lazy    => 1,
+  default => sub {
+    exists $_[0]->payload->{gitignore} ? $_[0]->payload->{gitignore} : []
+  },
+);
+
 sub old_meta {
   my $meta = try {
     CPAN::Meta->load_file("META.json");
@@ -147,8 +156,11 @@ sub configure {
   my @push_to = ('origin');
   push @push_to, $self->git_remote if $self->git_remote ne 'origin';
 
+  my $gitignore_extra = join "\n", $self->gitignore->flatten;
+
   my $gen = Dist::Zilla::Util::FileGenerator->new(
     files => [
+      [ '.gitignore' => ( extra_content => $gitignore_extra, move => 1 ) ],
     ],
     source => "Dist::Zilla::PluginBundle::MITHALDU::Templates",
   );
@@ -300,8 +312,10 @@ following dist.ini:
   [GatherDir]         ; everything under top dir
   exclude_filename = README.pod   ; skip this generated file
   exclude_filename = META.json    ; skip this generated file
+  exclude_filename = .gitignore   ; skip this generated file
 
   [PruneCruft]        ; default stuff to skip
+  except = .gitignore
   [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
 
   ; file modifications
@@ -317,6 +331,12 @@ following dist.ini:
   type = pod
   filename = README.pod
   location = root
+  [GenerateFile]
+  filename    = .gitignore
+  is_template = 1
+  content = /.build
+  content = /{{ $dist->name }}-*
+  ; and more, see Dist::Zilla::PluginBundle::MITHALDU::Templates
 
   ; t tests
   [Test::Compile]     ; make sure .pm files all compile
@@ -362,6 +382,7 @@ following dist.ini:
   ; copy META.json back to repo dis
   [CopyFilesFromBuild]
   copy = META.json
+  move = .gitignore
 
   ; before release
   [Git::Check]        ; ensure all files checked in
@@ -412,6 +433,7 @@ testing a dist.ini without risking a real release.
 * {stopwords} -- add stopword for Test::PodSpelling (can be repeated)
 * {no_critic} -- omit Test::Perl::Critic tests
 * {no_spellcheck} -- omit Test::PodSpelling tests
+* {gitignore} -- adds entries to be added to .gitignore (can be repeated)
 
 = SEE ALSO
 

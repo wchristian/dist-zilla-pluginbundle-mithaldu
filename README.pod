@@ -26,8 +26,10 @@ following dist.ini:
    [GatherDir]         ; everything under top dir
    exclude_filename = README.pod   ; skip this generated file
    exclude_filename = META.json    ; skip this generated file
+   exclude_filename = .gitignore   ; skip this generated file
  
    [PruneCruft]        ; default stuff to skip
+   except = .gitignore
    [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
  
    ; file modifications
@@ -43,6 +45,12 @@ following dist.ini:
    type = pod
    filename = README.pod
    location = root
+   [GenerateFile]
+   filename    = .gitignore
+   is_template = 1
+   content = /.build
+   content = /{{ $dist->name }}-*
+   ; and more, see Dist::Zilla::PluginBundle::MITHALDU::Templates
  
    ; t tests
    [Test::Compile]     ; make sure .pm files all compile
@@ -88,6 +96,7 @@ following dist.ini:
    ; copy META.json back to repo dis
    [CopyFilesFromBuild]
    copy = META.json
+   move = .gitignore
  
    ; before release
    [Git::Check]        ; ensure all files checked in
@@ -171,6 +180,10 @@ C<<< no_critic >>> -- omit Test::Perl::Critic tests
 =item *
 
 C<<< no_spellcheck >>> -- omit Test::PodSpelling tests
+
+=item *
+
+C<<< gitignore >>> -- adds entries to be added to .gitignore (can be repeated)
 
 =back
 
