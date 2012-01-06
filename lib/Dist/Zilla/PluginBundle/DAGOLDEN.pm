@@ -162,6 +162,7 @@ sub configure {
   my $gen = Dist::Zilla::Util::FileGenerator->new(
     files => [
       [ '.gitignore' => ( extra_content => $gitignore_extra, move => 1 ) ],
+      'README.PATCHING',
     ],
     source => "Dist::Zilla::PluginBundle::MITHALDU::Templates",
   );
@@ -314,9 +315,11 @@ following dist.ini:
   exclude_filename = README.pod   ; skip this generated file
   exclude_filename = META.json    ; skip this generated file
   exclude_filename = .gitignore   ; skip this generated file
+  exclude_filename = README.PATCHING ; skip this generated file
 
   [PruneCruft]        ; default stuff to skip
   except = .gitignore
+  except = README.PATCHING
   [ManifestSkip]      ; if -f MANIFEST.SKIP, skip those, too
 
   ; file modifications
@@ -337,6 +340,11 @@ following dist.ini:
   is_template = 1
   content = /.build
   content = /{{ $dist->name }}-*
+  ; and more, see Dist::Zilla::PluginBundle::MITHALDU::Templates
+  [GenerateFile]
+  filename    = README.PATCHING
+  is_template = 1
+  content = README.PATCHING
   ; and more, see Dist::Zilla::PluginBundle::MITHALDU::Templates
 
   ; t tests
@@ -384,6 +392,7 @@ following dist.ini:
   [CopyFilesFromBuild]
   copy = META.json
   move = .gitignore
+  copy = README.PATCHING
 
   ; before release
   [Git::Check]        ; ensure all files checked in
