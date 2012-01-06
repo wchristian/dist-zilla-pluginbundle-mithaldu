@@ -101,3 +101,10 @@ Once installed, here are some dzil commands you might try:
   $ dzil xtest
 
 You can learn more about Dist::Zilla at http://dzil.org/
+
+@@ perlcritic.rc
+# THIS IS AN AUTOMATICALLY GENERATED FILE.
+# CHANGES TO IT WILL BE DESTROYED BY Dist::Zilla.
+
+[TestingAndDebugging::RequireUseStrict]
+equivalent_modules = strictures
