@@ -8,6 +8,8 @@ use autodie 2.00;
 use Moose 0.99;
 use Moose::Autobox;
 use namespace::autoclean 0.09;
+use CPAN::Meta;
+use Try::Tiny;
 
 use Dist::Zilla 4.3; # authordeps
 
@@ -118,6 +120,23 @@ has git_remote => (
   },
 );
 
+sub old_meta {
+  my $meta = try {
+    CPAN::Meta->load_file("META.json");
+  }
+  catch {
+    warn "META.json could not be read, using fallback meta. Error:\n $_";
+    return { version => 0.1, resources => { homepage => 'http://homepage', repository => { web => "user/repo" } } };
+  };
+
+  my @github_url = split '/', $meta->{resources}{repository}{web};
+  my ( $old_repo, $old_user ) = ( pop @github_url, pop @github_url );
+  my $github = [ homepage => $meta->{resources}{homepage}, repo => $old_repo, user => $old_user ];
+
+  my $version = $meta->{version};
+
+  return ( $version, $github, $meta );
+}
 
 sub configure {
   my $self = shift;
@@ -125,10 +144,17 @@ sub configure {
   my @push_to = ('origin');
   push @push_to, $self->git_remote if $self->git_remote ne 'origin';
 
+  my ( $old_version, $old_github ) = $self->old_meta;
+
+  my $version_provider = ['StaticVersion' => { version => $old_version } ];
+
+  my $is_release = grep /^release$/, @ARGV;
+  $version_provider = [ 'Git::NextVersion' => { version_regexp => $self->version_regexp } ] if $is_release;
+
   $self->add_plugins (
 
   # version number
-    [ 'Git::NextVersion' => { version_regexp => $self->version_regexp } ],
+    $version_provider,
 
   # gather and prune
     [ GatherDir => { exclude_filename => [qw/README.pod META.json/] }], # core
@@ -168,7 +194,7 @@ sub configure {
   # metadata
     'MinimumPerl',
     ( $self->auto_prereq ? 'AutoPrereqs' : () ),
-    [ GithubMeta => { remote => $self->git_remote } ],
+    [ GithubMeta => { remote => $self->git_remote, ( $is_release ? () : @{$old_github} ) } ],
     [ MetaNoIndex => { 
         directory => [qw/t xt examples corpus/],
         'package' => [qw/DB/]
@@ -245,7 +271,7 @@ __END__
 autoprereq dagolden fakerelease pluginbundle podweaver
 taskweaver uploadtocpan dist ini
 
-=for Pod::Coverage configure mvp_multivalue_args
+=for Pod::Coverage configure mvp_multivalue_args old_meta
 
 =begin wikidoc
 
