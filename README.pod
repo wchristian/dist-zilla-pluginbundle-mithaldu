@@ -6,7 +6,7 @@ Dist::Zilla::PluginBundle::MITHALDU - Dist::Zilla configuration the way MITHALDU
 
 =head1 VERSION
 
-version 0.024
+version 1.120091
 
 =head1 SYNOPSIS
 
@@ -151,7 +151,7 @@ following dist.ini:
 =for stopwords autoprereq mithaldu fakerelease pluginbundle podweaver
 taskweaver uploadtocpan dist ini
 
-=for Pod::Coverage configure mvp_multivalue_args
+=for Pod::Coverage configure mvp_multivalue_args old_meta
 
 =head1 USAGE
 
@@ -243,9 +243,9 @@ You will be notified automatically of any progress on your issue.
 This is open source software.  The code repository is available for
 public review and contribution under the terms of the license.
 
-L<https://github.com/dagolden/dist-zilla-pluginbundle-dagolden>
+L<https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu>
 
-  git clone https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
+  git clone https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu.git
 
 =head1 AUTHORS
 

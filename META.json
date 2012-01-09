@@ -88,15 +88,15 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::MITHALDU" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU.pm",
-         "version" : "0.024"
+         "version" : "1.120091"
       },
       "Dist::Zilla::PluginBundle::MITHALDU::Templates" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU/Templates.pm",
-         "version" : "0.024"
+         "version" : "1.120091"
       },
       "Pod::Weaver::PluginBundle::MITHALDU" : {
          "file" : "lib/Pod/Weaver/PluginBundle/MITHALDU.pm",
-         "version" : "0.024"
+         "version" : "1.120091"
       }
    },
    "release_status" : "stable",
@@ -105,13 +105,13 @@
          "mailto" : "bug-dist-zilla-pluginbundle-mithaldu at rt.cpan.org",
          "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MITHALDU"
       },
-      "homepage" : "https://github.com/dagolden/dist-zilla-pluginbundle-dagolden",
+      "homepage" : "https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu",
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git",
-         "web" : "https://github.com/dagolden/dist-zilla-pluginbundle-dagolden"
+         "url" : "https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu.git",
+         "web" : "https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu"
       }
    },
-   "version" : "0.024"
+   "version" : "1.120091"
 }
 
