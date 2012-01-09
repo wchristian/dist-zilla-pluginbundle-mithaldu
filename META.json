@@ -33,6 +33,7 @@
       "runtime" : {
          "requires" : {
             "CPAN::Meta" : 0,
+            "Data::Section::Simple" : 0,
             "Dist::Zilla" : "4.3",
             "Dist::Zilla::Plugin::AutoVersion" : 0,
             "Dist::Zilla::Plugin::Bugtracker" : "1.102670",
@@ -58,6 +59,7 @@
             "Dist::Zilla::PluginBundle::Filter" : 0,
             "Dist::Zilla::PluginBundle::Git" : 0,
             "Dist::Zilla::Role::PluginBundle::Easy" : 0,
+            "Dist::Zilla::Util::FileGenerator" : 0,
             "Moose" : "0.99",
             "Moose::Autobox" : 0,
             "Pod::Elemental::Transformer::List" : "0.101620",
@@ -69,6 +71,7 @@
             "namespace::autoclean" : "0.09",
             "perl" : "5.006",
             "strict" : 0,
+            "strictures" : 0,
             "warnings" : 0
          }
       },
@@ -84,6 +87,10 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::DAGOLDEN" : {
          "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
+         "version" : "0.024"
+      },
+      "Dist::Zilla::PluginBundle::MITHALDU::Templates" : {
+         "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU/Templates.pm",
          "version" : "0.024"
       },
       "Pod::Weaver::PluginBundle::DAGOLDEN" : {

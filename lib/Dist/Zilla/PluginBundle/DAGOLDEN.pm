@@ -38,6 +38,9 @@ use Dist::Zilla::Plugin::ReadmeFromPod ();
 use Dist::Zilla::Plugin::TaskWeaver 0.101620 ();
 use Dist::Zilla::Plugin::Test::Version ();
 
+use Dist::Zilla::PluginBundle::MITHALDU::Templates;
+use Dist::Zilla::Util::FileGenerator;
+
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
 sub mvp_multivalue_args { qw/stopwords/ }
@@ -144,6 +147,12 @@ sub configure {
   my @push_to = ('origin');
   push @push_to, $self->git_remote if $self->git_remote ne 'origin';
 
+  my $gen = Dist::Zilla::Util::FileGenerator->new(
+    files => [
+    ],
+    source => "Dist::Zilla::PluginBundle::MITHALDU::Templates",
+  );
+
   my ( $old_version, $old_github ) = $self->old_meta;
 
   my $version_provider = ['StaticVersion' => { version => $old_version } ];
@@ -151,7 +160,7 @@ sub configure {
   my $is_release = grep /^release$/, @ARGV;
   $version_provider = [ 'AutoVersion' => { major => $self->major_version } ] if $is_release;
 
-  $self->add_plugins (
+  my @plugins = (
 
   # version number
     $version_provider,
@@ -248,6 +257,10 @@ sub configure {
     [ 'Git::Push' => { push_to => \@push_to } ],
 
   );
+
+  @plugins = $gen->combine_with( @plugins );
+
+  $self->add_plugins( @plugins );
 
 }
 
