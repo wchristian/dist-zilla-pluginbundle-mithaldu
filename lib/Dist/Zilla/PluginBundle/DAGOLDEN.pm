@@ -16,13 +16,13 @@ use Dist::Zilla 4.3; # authordeps
 use Dist::Zilla::PluginBundle::Filter ();
 use Dist::Zilla::PluginBundle::Git ();
 
+use Dist::Zilla::Plugin::AutoVersion ();
 use Dist::Zilla::Plugin::Bugtracker 1.102670 ();
 use Dist::Zilla::Plugin::CheckChangesHasContent ();
 use Dist::Zilla::Plugin::CheckExtraTests ();
 use Dist::Zilla::Plugin::CheckPrereqsIndexed 0.002 ();
 use Dist::Zilla::Plugin::Test::Compile ();
 use Dist::Zilla::Plugin::CopyFilesFromBuild ();
-use Dist::Zilla::Plugin::Git::NextVersion ();
 use Dist::Zilla::Plugin::GithubMeta 0.10 ();
 use Dist::Zilla::Plugin::InsertCopyright 0.001 ();
 use Dist::Zilla::Plugin::MetaNoIndex ();
@@ -96,15 +96,6 @@ has tag_format => (
   },
 );
 
-has version_regexp => (
-  is      => 'ro',
-  isa     => 'Str',
-  lazy    => 1,
-  default => sub {
-    exists $_[0]->payload->{version_regexp} ? $_[0]->payload->{version_regexp} : '^release-(.+)$',
-  },
-);
-
 has weaver_config => (
   is      => 'ro',
   isa     => 'Str',
@@ -118,6 +109,15 @@ has git_remote => (
   lazy    => 1,
   default => sub {
     exists $_[0]->payload->{git_remote} ? $_[0]->payload->{git_remote} : 'origin',
+  },
+);
+
+has major_version => (
+  is      => 'ro',
+  isa     => 'Int',
+  lazy    => 1,
+  default => sub {
+    exists $_[0]->payload->{major_version} ? $_[0]->payload->{major_version} : 1
   },
 );
 
@@ -150,7 +150,7 @@ sub configure {
   my $version_provider = ['StaticVersion' => { version => $old_version } ];
 
   my $is_release = grep /^release$/, @ARGV;
-  $version_provider = [ 'Git::NextVersion' => { version_regexp => $self->version_regexp } ] if $is_release;
+  $version_provider = [ 'AutoVersion' => { major => $self->major_version } ] if $is_release;
 
   $self->add_plugins (
 
@@ -287,8 +287,8 @@ This is a [Dist::Zilla] PluginBundle.  It is roughly equivalent to the
 following dist.ini:
 
   ; version provider
-  [Git::NextVersion]  ; get version from last release tag
-  version_regexp = ^release-(.+)$
+  [AutoVersion]  ; build a version from the date
+  major = 1
 
   ; choose files to include
   [GatherDir]         ; everything under top dir
@@ -402,10 +402,8 @@ Default is 0.
 * {auto_prereq} -- this indicates whether AutoPrereq should be used or not.
 Default is 1.
 * {tag_format} -- given to {Git::Tag}.  Default is 'release-%v' to be more
-robust than just the version number when parsing versions for
-{Git::NextVersion}
-* {version_regexp} -- given to {Git::NextVersion}.  Default
-is '^release-(.+)$'
+robust than just the version number when parsing versions
+* {major_version} -- overrides the major version set by AutoVersion
 * {fake_release} -- swaps FakeRelease for UploadToCPAN. Mostly useful for
 testing a dist.ini without risking a real release.
 * {weaver_config} -- specifies a Pod::Weaver bundle.  Defaults to @DAGOLDEN.
