@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-Dist::Zilla::PluginBundle::DAGOLDEN - Dist::Zilla configuration the way DAGOLDEN does it
+Dist::Zilla::PluginBundle::MITHALDU - Dist::Zilla configuration the way MITHALDU does it
 
 =head1 VERSION
 
@@ -11,9 +11,12 @@ version 0.024
 =head1 SYNOPSIS
 
    # in dist.ini
-   [@DAGOLDEN]
+   [@MITHALDU]
 
 =head1 DESCRIPTION
+
+This module is forked off of L<Dist::Zilla::PluginBundle::DAGOLDEN> and modified
+to suit my own tastes. He did most of the work.
 
 This is a L<Dist::Zilla> PluginBundle.  It is roughly equivalent to the
 following dist.ini:
@@ -40,7 +43,7 @@ following dist.ini:
    [OurPkgVersion]     ; add $VERSION = ... to all files
    [InsertCopyright    ; add copyright at "# COPYRIGHT"
    [PodWeaver]         ; generate Pod
-   config_plugin = @DAGOLDEN ; my own plugin allows Pod::WikiDoc
+   config_plugin = @MITHALDU ; my own plugin allows Pod::WikiDoc
  
    ; generated files
    [License]           ; boilerplate license
@@ -145,7 +148,7 @@ following dist.ini:
    [Git::Push]         ; push repo to remote
    push_to = origin
 
-=for stopwords autoprereq dagolden fakerelease pluginbundle podweaver
+=for stopwords autoprereq mithaldu fakerelease pluginbundle podweaver
 taskweaver uploadtocpan dist ini
 
 =for Pod::Coverage configure mvp_multivalue_args old_meta
@@ -183,7 +186,7 @@ testing a dist.ini without risking a real release.
 
 =item *
 
-C<<< weaver_config >>> -- specifies a Pod::Weaver bundle.  Defaults to @DAGOLDEN.
+C<<< weaver_config >>> -- specifies a Pod::Weaver bundle.  Defaults to @MITHALDU.
 
 =item *
 
@@ -232,7 +235,7 @@ L<Dist::Zilla::Plugin::TaskWeaver>
 =head2 Bugs / Feature Requests
 
 Please report any bugs or feature requests through the issue tracker
-at L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN>.
+at L<http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MITHALDU>.
 You will be notified automatically of any progress on your issue.
 
 =head2 Source Code
@@ -244,15 +247,25 @@ L<https://github.com/dagolden/dist-zilla-pluginbundle-dagolden>
 
   git clone https://github.com/dagolden/dist-zilla-pluginbundle-dagolden.git
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 David Golden <dagolden@cpan.org>
 
+=item *
+
+Christian Walde <mithaldu@cpan.org>
+
+=back
+
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by David Golden.
+This software is Copyright (c) 2012 by Christian Walde.
 
 This is free software, licensed under:
 
-  The Apache License, Version 2.0, January 2004
+  DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE, Version 2, December 2004
 
