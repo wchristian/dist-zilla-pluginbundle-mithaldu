@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-package Dist::Zilla::PluginBundle::DAGOLDEN;
+package Dist::Zilla::PluginBundle::MITHALDU;
 # VERSION
 
 # Dependencies
@@ -102,7 +102,7 @@ has weaver_config => (
   is      => 'ro',
   isa     => 'Str',
   lazy    => 1,
-  default => sub { $_[0]->payload->{weaver_config} || '@DAGOLDEN' },
+  default => sub { $_[0]->payload->{weaver_config} || '@MITHALDU' },
 );
 
 has git_remote => (
@@ -291,14 +291,14 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-# ABSTRACT: Dist::Zilla configuration the way DAGOLDEN does it
+# ABSTRACT: Dist::Zilla configuration the way MITHALDU does it
 # COPYRIGHT
 
 __END__
 
 
 =for stopwords
-autoprereq dagolden fakerelease pluginbundle podweaver
+autoprereq mithaldu fakerelease pluginbundle podweaver
 taskweaver uploadtocpan dist ini
 
 =for Pod::Coverage configure mvp_multivalue_args old_meta
@@ -308,9 +308,12 @@ taskweaver uploadtocpan dist ini
 = SYNOPSIS
 
   # in dist.ini
-  [@DAGOLDEN]
+  [@MITHALDU]
 
 = DESCRIPTION
+
+This module is forked off of [Dist::Zilla::PluginBundle::DAGOLDEN] and modified
+to suit my own tastes. He did most of the work.
 
 This is a [Dist::Zilla] PluginBundle.  It is roughly equivalent to the
 following dist.ini:
@@ -337,7 +340,7 @@ following dist.ini:
   [OurPkgVersion]     ; add $VERSION = ... to all files
   [InsertCopyright    ; add copyright at "# COPYRIGHT"
   [PodWeaver]         ; generate Pod
-  config_plugin = @DAGOLDEN ; my own plugin allows Pod::WikiDoc
+  config_plugin = @MITHALDU ; my own plugin allows Pod::WikiDoc
 
   ; generated files
   [License]           ; boilerplate license
@@ -456,7 +459,7 @@ robust than just the version number when parsing versions
 * {major_version} -- overrides the major version set by AutoVersion
 * {fake_release} -- swaps FakeRelease for UploadToCPAN. Mostly useful for
 testing a dist.ini without risking a real release.
-* {weaver_config} -- specifies a Pod::Weaver bundle.  Defaults to @DAGOLDEN.
+* {weaver_config} -- specifies a Pod::Weaver bundle.  Defaults to @MITHALDU.
 * {stopwords} -- add stopword for Test::PodSpelling (can be repeated)
 * {no_critic} -- omit Test::Perl::Critic tests
 * {no_spellcheck} -- omit Test::PodSpelling tests

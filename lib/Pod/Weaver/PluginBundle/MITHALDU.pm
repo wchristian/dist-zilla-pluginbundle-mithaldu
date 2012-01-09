@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-package Pod::Weaver::PluginBundle::DAGOLDEN;
+package Pod::Weaver::PluginBundle::MITHALDU;
 # VERSION
 
 use Pod::Weaver::Config::Assembler;
@@ -26,17 +26,17 @@ END
 sub mvp_bundle_config {
   my @plugins;
   push @plugins, (
-    [ '@DAGOLDEN/WikiDoc',     _exp('-WikiDoc'), {} ],
-    [ '@DAGOLDEN/CorePrep',    _exp('@CorePrep'), {} ],
-    [ '@DAGOLDEN/Name',        _exp('Name'),      {} ],
-    [ '@DAGOLDEN/Version',     _exp('Version'),   {} ],
+    [ '@MITHALDU/WikiDoc',     _exp('-WikiDoc'), {} ],
+    [ '@MITHALDU/CorePrep',    _exp('@CorePrep'), {} ],
+    [ '@MITHALDU/Name',        _exp('Name'),      {} ],
+    [ '@MITHALDU/Version',     _exp('Version'),   {} ],
 
-    [ '@DAGOLDEN/Prelude',     _exp('Region'),  { region_name => 'prelude'     } ],
-    [ '@DAGOLDEN/Synopsis',    _exp('Generic'), { header      => 'SYNOPSIS'    } ],
-    [ '@DAGOLDEN/Description', _exp('Generic'), { header      => 'DESCRIPTION' } ],
-    [ '@DAGOLDEN/Overview',    _exp('Generic'), { header      => 'OVERVIEW'    } ],
+    [ '@MITHALDU/Prelude',     _exp('Region'),  { region_name => 'prelude'     } ],
+    [ '@MITHALDU/Synopsis',    _exp('Generic'), { header      => 'SYNOPSIS'    } ],
+    [ '@MITHALDU/Description', _exp('Generic'), { header      => 'DESCRIPTION' } ],
+    [ '@MITHALDU/Overview',    _exp('Generic'), { header      => 'OVERVIEW'    } ],
 
-    [ '@DAGOLDEN/Stability',   _exp('Generic'), { header      => 'STABILITY'   } ],
+    [ '@MITHALDU/Stability',   _exp('Generic'), { header      => 'STABILITY'   } ],
   );
 
   for my $plugin (
@@ -49,9 +49,9 @@ sub mvp_bundle_config {
   }
 
   push @plugins, (
-    [ '@DAGOLDEN/Leftovers', _exp('Leftovers'), {} ],
-    [ '@DAGOLDEN/postlude',  _exp('Region'),    { region_name => 'postlude' } ],
-    [ '@DAGOLDEN/Support',   _exp('Support'),
+    [ '@MITHALDU/Leftovers', _exp('Leftovers'), {} ],
+    [ '@MITHALDU/postlude',  _exp('Region'),    { region_name => 'postlude' } ],
+    [ '@MITHALDU/Support',   _exp('Support'),
       {
         perldoc => 0,
         websites => 'none',
@@ -61,15 +61,15 @@ sub mvp_bundle_config {
         repository_content => $repo_intro
       }
     ],
-    [ '@DAGOLDEN/Authors',   _exp('Authors'),   {} ],
-    [ '@DAGOLDEN/Legal',     _exp('Legal'),     {} ],
-    [ '@DAGOLDEN/List',      _exp('-Transformer'), { 'transformer' => 'List' } ],
+    [ '@MITHALDU/Authors',   _exp('Authors'),   {} ],
+    [ '@MITHALDU/Legal',     _exp('Legal'),     {} ],
+    [ '@MITHALDU/List',      _exp('-Transformer'), { 'transformer' => 'List' } ],
   );
 
   return @plugins;
 }
 
-# ABSTRACT: DAGOLDEN's default Pod::Weaver config
+# ABSTRACT: MITHALDU's default Pod::Weaver config
 # COPYRIGHT
 
 1;
@@ -100,7 +100,7 @@ following weaver.ini:
 
 = USAGE
 
-This PluginBundle is used automatically with the C<@DAGOLDEN> [Dist::Zilla]
+This PluginBundle is used automatically with the C<@MITHALDU> [Dist::Zilla]
 plugin bundle.
 
 = SEE ALSO
@@ -113,4 +113,3 @@ plugin bundle.
 =end wikidoc
 
 =cut
-

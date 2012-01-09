@@ -1,18 +1,19 @@
 {
-   "abstract" : "Dist::Zilla configuration the way DAGOLDEN does it",
+   "abstract" : "Dist::Zilla configuration the way MITHALDU does it",
    "author" : [
-      "David Golden <dagolden@cpan.org>"
+      "David Golden <dagolden@cpan.org>",
+      "Christian Walde <mithaldu@cpan.org>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640",
    "license" : [
-      "apache_2_0"
+      "unrestricted"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Dist-Zilla-PluginBundle-DAGOLDEN",
+   "name" : "Dist-Zilla-PluginBundle-MITHALDU",
    "no_index" : {
       "directory" : [
          "t",
@@ -85,24 +86,24 @@
       }
    },
    "provides" : {
-      "Dist::Zilla::PluginBundle::DAGOLDEN" : {
-         "file" : "lib/Dist/Zilla/PluginBundle/DAGOLDEN.pm",
+      "Dist::Zilla::PluginBundle::MITHALDU" : {
+         "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU.pm",
          "version" : "0.024"
       },
       "Dist::Zilla::PluginBundle::MITHALDU::Templates" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU/Templates.pm",
          "version" : "0.024"
       },
-      "Pod::Weaver::PluginBundle::DAGOLDEN" : {
-         "file" : "lib/Pod/Weaver/PluginBundle/DAGOLDEN.pm",
+      "Pod::Weaver::PluginBundle::MITHALDU" : {
+         "file" : "lib/Pod/Weaver/PluginBundle/MITHALDU.pm",
          "version" : "0.024"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "mailto" : "bug-dist-zilla-pluginbundle-dagolden at rt.cpan.org",
-         "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-DAGOLDEN"
+         "mailto" : "bug-dist-zilla-pluginbundle-mithaldu at rt.cpan.org",
+         "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MITHALDU"
       },
       "homepage" : "https://github.com/dagolden/dist-zilla-pluginbundle-dagolden",
       "repository" : {
