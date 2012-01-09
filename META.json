@@ -34,12 +34,12 @@
          "requires" : {
             "CPAN::Meta" : 0,
             "Dist::Zilla" : "4.3",
+            "Dist::Zilla::Plugin::AutoVersion" : 0,
             "Dist::Zilla::Plugin::Bugtracker" : "1.102670",
             "Dist::Zilla::Plugin::CheckChangesHasContent" : 0,
             "Dist::Zilla::Plugin::CheckExtraTests" : 0,
             "Dist::Zilla::Plugin::CheckPrereqsIndexed" : "0.002",
             "Dist::Zilla::Plugin::CopyFilesFromBuild" : 0,
-            "Dist::Zilla::Plugin::Git::NextVersion" : 0,
             "Dist::Zilla::Plugin::GithubMeta" : "0.10",
             "Dist::Zilla::Plugin::InsertCopyright" : "0.001",
             "Dist::Zilla::Plugin::MetaNoIndex" : 0,

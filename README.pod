@@ -19,8 +19,8 @@ This is a L<Dist::Zilla> PluginBundle.  It is roughly equivalent to the
 following dist.ini:
 
    ; version provider
-   [Git::NextVersion]  ; get version from last release tag
-   version_regexp = ^release-(.+)$
+   [AutoVersion]  ; build a version from the date
+   major = 1
  
    ; choose files to include
    [GatherDir]         ; everything under top dir
@@ -149,13 +149,11 @@ Default is 1.
 =item *
 
 C<<< tag_format >>> -- given to C<<< Git::Tag >>>.  Default is 'release-%v' to be more
-robust than just the version number when parsing versions for
-C<<< Git::NextVersion >>>
+robust than just the version number when parsing versions
 
 =item *
 
-C<<< version_regexp >>> -- given to C<<< Git::NextVersion >>>.  Default
-is '^release-(.+)$'
+C<<< major_version >>> -- overrides the major version set by AutoVersion
 
 =item *
 
