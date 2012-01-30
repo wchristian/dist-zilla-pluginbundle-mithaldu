@@ -2,6 +2,18 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+1.120300  2012-01-30 14:36:47 Europe/Berlin
+
+    - Dist::Zilla::App::cover is now a dependency to ensure it's available on
+      the command line
+    - .gitignore, README.PATCHING and perlcritic.rc are now generated during the
+      build phase
+    - added an option to exclude files by regex
+    - release process now bumps the version in the release commit
+    - AutoVersion instead of Git::NextVersion
+    - minimize noise in development commits by restricting metadata updates to
+      version and github urls to release time
+
 0.023     2011-12-30 15:29:54 EST5EDT
 
     - change PortabilityTests and CompileTests to the newer Test::* naming
