@@ -4,7 +4,7 @@
       "David Golden <dagolden@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300005, CPAN::Meta::Converter version 2.112621",
+   "generated_by" : "Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640",
    "license" : [
       "apache_2_0"
    ],
@@ -32,6 +32,7 @@
       },
       "runtime" : {
          "requires" : {
+            "CPAN::Meta" : 0,
             "Dist::Zilla" : "4.3",
             "Dist::Zilla::Plugin::Bugtracker" : "1.102670",
             "Dist::Zilla::Plugin::CheckChangesHasContent" : 0,
@@ -63,6 +64,7 @@
             "Pod::Weaver::Config::Assembler" : 0,
             "Pod::Weaver::Plugin::WikiDoc" : 0,
             "Pod::Weaver::Section::Support" : "1.001",
+            "Try::Tiny" : 0,
             "autodie" : "2.00",
             "namespace::autoclean" : "0.09",
             "perl" : "5.006",
