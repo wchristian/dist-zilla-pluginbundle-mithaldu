@@ -148,7 +148,7 @@ following dist.ini:
 =for stopwords autoprereq dagolden fakerelease pluginbundle podweaver
 taskweaver uploadtocpan dist ini
 
-=for Pod::Coverage configure mvp_multivalue_args
+=for Pod::Coverage configure mvp_multivalue_args old_meta
 
 =head1 USAGE
 
@@ -225,7 +225,7 @@ L<Dist::Zilla::Plugin::TaskWeaver>
 
 =back
 
-=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders
+=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
 
 =head1 SUPPORT
 

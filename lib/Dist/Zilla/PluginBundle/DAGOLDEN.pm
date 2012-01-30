@@ -42,6 +42,9 @@ use Dist::Zilla::Plugin::Test::Version ();
 use Dist::Zilla::PluginBundle::MITHALDU::Templates;
 use Dist::Zilla::Util::FileGenerator;
 
+use Dist::Zilla::App::Command::cover; # this is just here for the prereqs to
+                                      # ensure it's available for dev
+
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
 sub mvp_multivalue_args { qw/stopwords gitignore exclude_match/ }
