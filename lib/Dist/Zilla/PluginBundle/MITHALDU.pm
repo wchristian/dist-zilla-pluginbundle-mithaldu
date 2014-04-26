@@ -145,6 +145,15 @@ has exclude_match => (
   },
 );
 
+has prune_except => (
+  is      => 'ro',
+  isa     => 'ArrayRef',
+  lazy    => 1,
+  default => sub {
+    exists $_[0]->payload->{prune_except} ? $_[0]->payload->{prune_except} : []
+  },
+);
+
 sub old_meta {
   my $meta = try {
     CPAN::Meta->load_file("META.json");
@@ -194,7 +203,7 @@ sub configure {
 
   # gather and prune
     [ GatherDir => { exclude_filename => [qw/README.pod META.json/], exclude_match => $self->exclude_match }], # core
-    'PruneCruft',         # core
+    ['PruneCruft', { except => $self->prune_except }], # core
     'ManifestSkip',       # core
 
   # file munging
@@ -469,6 +478,8 @@ testing a dist.ini without risking a real release.
 * {no_spellcheck} -- omit Test::PodSpelling tests
 * {gitignore} -- adds entries to be added to .gitignore (can be repeated)
 * {exclude_match} -- regexes to exclude files from the dist (can be repeated)
+* {prune_except} -- regexes to except files from being pruned as cruft (can
+be repeated)
 
 = SEE ALSO
 
