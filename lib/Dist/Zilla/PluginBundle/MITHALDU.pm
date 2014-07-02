@@ -202,7 +202,10 @@ sub configure {
     $version_provider,
 
   # gather and prune
-    [ GatherDir => { exclude_filename => [qw/README.pod META.json/], exclude_match => $self->exclude_match }], # core
+    [ GatherDir => {
+      exclude_filename => [qw/README.pod META.json/],
+      (scalar @{$self->exclude_match}) ? (exclude_match => $self->exclude_match) : () }
+    ], # core
     ['PruneCruft', { except => $self->prune_except }], # core
     'ManifestSkip',       # core
 
@@ -228,7 +231,7 @@ sub configure {
     [ 'Test::Compile' => { fake_home => 1 } ],
 
   # generated xt/ tests
-    [ 'Test::PodSpelling' => { stopwords => $self->stopwords } ],
+    [ 'Test::PodSpelling' => (scalar @{$self->stopwords}) ? ({ stopwords => $self->stopwords }) : () ],
     'Test::Perl::Critic',
     'MetaTests',          # core
     'PodSyntaxTests',     # core
