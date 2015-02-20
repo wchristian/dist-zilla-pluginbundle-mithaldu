@@ -200,6 +200,8 @@ sub configure {
   my $is_release = grep /^release$/, @ARGV;
   $version_provider = [ 'AutoVersion' => { major => $self->major_version } ] if $is_release;
 
+  my @on_release_files = qw/dist.ini Changes README.pod META.json Makefile.PL/;
+
   my @plugins = (
 
   # version number
@@ -275,7 +277,7 @@ sub configure {
   # before release
     [ 'Git::Check' =>
       {
-        allow_dirty => [qw/dist.ini Changes README.pod META.json Makefile.PL/]
+        allow_dirty => [@on_release_files]
       }
     ],
     'CheckPrereqsIndexed',
@@ -293,7 +295,7 @@ sub configure {
     # commit dirty Changes, dist.ini, README.pod, META.json
     [ 'Git::Commit' =>
       {
-        allow_dirty => [qw/dist.ini Changes README.pod META.json/]
+        allow_dirty => [@on_release_files]
       }
     ],
     [ 'Git::Tag' => { tag_format => $self->tag_format } ],
