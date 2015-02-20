@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+1.150511  2015-02-20 13:25:09+01:00 Europe/Berlin
+    - allow single values for exclude_match when loaded through @Filter
+
 1.150510  2015-02-20 04:42:01+01:00 Europe/Berlin
     - copy Makefile.PL to build dir
     - fix up a name replacement oversight
