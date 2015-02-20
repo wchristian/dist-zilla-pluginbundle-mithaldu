@@ -6,7 +6,7 @@ Dist::Zilla::PluginBundle::MITHALDU - Dist::Zilla configuration the way MITHALDU
 
 =head1 VERSION
 
-version 1.150511
+version 1.150512
 
 =head1 SYNOPSIS
 

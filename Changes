@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+1.150512  2015-02-20 14:26:20+01:00 Europe/Berlin
+    - sync files Git::Check complains about and Git::Commit commits on release
+
 1.150511  2015-02-20 13:25:09+01:00 Europe/Berlin
     - allow single values for exclude_match when loaded through @Filter
 
