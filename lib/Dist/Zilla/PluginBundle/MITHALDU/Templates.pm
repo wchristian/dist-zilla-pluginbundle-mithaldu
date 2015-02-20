@@ -49,6 +49,7 @@ __DATA__
 /pm_to_blib
 /PM_to_blib
 /MYMETA.yml
+/MYMETA.json
 /{{ $dist->name }}-*
 
 @@ README.PATCHING

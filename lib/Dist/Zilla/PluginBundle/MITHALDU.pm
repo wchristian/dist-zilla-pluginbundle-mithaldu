@@ -204,7 +204,7 @@ sub configure {
   # gather and prune
     [ GatherDir => {
       exclude_filename => [qw/README.pod META.json/],
-      (scalar @{$self->exclude_match}) ? (exclude_match => $self->exclude_match) : () }
+      exclude_match => ['Makefile.PL',@{$self->exclude_match}] }
     ], # core
     ['PruneCruft', { except => $self->prune_except }], # core
     'ManifestSkip',       # core
@@ -261,6 +261,7 @@ sub configure {
   # copy files from build back to root for inclusion in VCS
   [ CopyFilesFromBuild => {
       copy => 'META.json',
+      copy => 'Makefile.PL',
     }
   ],
 
@@ -270,7 +271,7 @@ sub configure {
   # before release
     [ 'Git::Check' =>
       {
-        allow_dirty => [qw/dist.ini Changes README.pod META.json/]
+        allow_dirty => [qw/dist.ini Changes README.pod META.json Makefile.PL/]
       }
     ],
     'CheckPrereqsIndexed',
