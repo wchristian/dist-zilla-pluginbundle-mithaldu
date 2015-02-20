@@ -2,6 +2,10 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+1.150510  2015-02-20 04:42:01+01:00 Europe/Berlin
+    - copy Makefile.PL to build dir
+    - fix up a name replacement oversight
+
 1.141830  2014-07-02 23:40:35+02:00 Europe/Berlin
     - updates for dzil 5.019
 
