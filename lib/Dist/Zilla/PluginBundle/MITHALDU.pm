@@ -141,7 +141,11 @@ has exclude_match => (
   isa     => 'ArrayRef',
   lazy    => 1,
   default => sub {
-    exists $_[0]->payload->{exclude_match} ? $_[0]->payload->{exclude_match} : []
+    my ($self) = @_;
+    my $payload = $_[0]->payload;
+    return [] if !exists $payload->{exclude_match};
+    my $match = $payload->{exclude_match};
+    return ref $match ? $match : [$match];
   },
 );
 
