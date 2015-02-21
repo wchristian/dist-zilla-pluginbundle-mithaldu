@@ -105,15 +105,15 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::MITHALDU" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU.pm",
-         "version" : "1.141830"
+         "version" : "1.150521"
       },
       "Dist::Zilla::PluginBundle::MITHALDU::Templates" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU/Templates.pm",
-         "version" : "1.141830"
+         "version" : "1.150521"
       },
       "Pod::Weaver::PluginBundle::MITHALDU" : {
          "file" : "lib/Pod/Weaver/PluginBundle/MITHALDU.pm",
-         "version" : "1.141830"
+         "version" : "1.150521"
       }
    },
    "release_status" : "stable",
@@ -129,6 +129,6 @@
          "web" : "https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu"
       }
    },
-   "version" : "1.141830"
+   "version" : "1.150521"
 }
 

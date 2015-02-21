@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+1.150521  2015-02-21 18:29:39+01:00 Europe/Berlin
+    - i am actually an idiot
+
 1.150520  2015-02-21 18:06:18+01:00 Europe/Berlin
     - add cpanfile generation
     - handle auto-generated files more sanely
