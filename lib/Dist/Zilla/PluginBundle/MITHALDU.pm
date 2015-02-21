@@ -200,7 +200,8 @@ sub configure {
   my $is_release = grep /^release$/, @ARGV;
   $version_provider = [ 'AutoVersion' => { major => $self->major_version } ] if $is_release;
 
-  my @on_release_files = qw/dist.ini Changes README.pod META.json Makefile.PL/;
+  my @generated_files = qw( META.json Makefile.PL README );
+  my @on_release_files = ( qw/dist.ini Changes/, @generated_files );
 
   my @plugins = (
 
@@ -209,8 +210,8 @@ sub configure {
 
   # gather and prune
     [ GatherDir => {
-      exclude_filename => [qw/README.pod META.json/],
-      exclude_match => ['Makefile.PL',@{$self->exclude_match}] }
+      exclude_filename => [@generated_files],
+      exclude_match => $self->exclude_match}
     ], # core
     ['PruneCruft', { except => $self->prune_except }], # core
     'ManifestSkip',       # core
@@ -226,12 +227,6 @@ sub configure {
   # generated distribution files
     'Pod2Readme',
     'License',            # core
-    [ ReadmeAnyFromPod => { # generate in root for github, etc.
-        type => 'pod',
-        filename => 'README.pod',
-        location => 'root',
-      }
-    ],
 
   # generated t/ tests
     [ 'Test::Compile' => { fake_home => 1 } ],
@@ -266,8 +261,7 @@ sub configure {
 
   # copy files from build back to root for inclusion in VCS
   [ CopyFilesFromBuild => {
-      copy => 'META.json',
-      copy => 'Makefile.PL',
+      map { ( copy => $_ ) } @generated_files
     }
   ],
 
