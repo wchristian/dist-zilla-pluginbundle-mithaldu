@@ -200,7 +200,7 @@ sub configure {
   my $is_release = grep /^release$/, @ARGV;
   $version_provider = [ 'AutoVersion' => { major => $self->major_version } ] if $is_release;
 
-  my @generated_files = qw( META.json Makefile.PL README );
+  my @generated_files = qw( META.json Makefile.PL cpanfile README );
   my @on_release_files = ( qw/dist.ini Changes/, @generated_files );
 
   my @plugins = (
@@ -243,6 +243,7 @@ sub configure {
   # metadata
     'MinimumPerl',
     ( $self->auto_prereq ? 'AutoPrereqs' : () ),
+    'CPANFile',
     [ GithubMeta => { remote => $self->git_remote, ( $is_release ? () : @{$old_github} ) } ],
     [ MetaNoIndex => {
         directory => [qw/t xt examples corpus/],
