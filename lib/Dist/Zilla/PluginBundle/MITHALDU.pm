@@ -224,7 +224,7 @@ sub configure {
     ),
 
   # generated distribution files
-    'ReadmeFromPod',
+    'Pod2Readme',
     'License',            # core
     [ ReadmeAnyFromPod => { # generate in root for github, etc.
         type => 'pod',
