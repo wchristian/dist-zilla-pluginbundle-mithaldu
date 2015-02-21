@@ -3,11 +3,11 @@ NAME
     MITHALDU does it
 
 VERSION
-    version 1.141830
+    version 1.150520
 
 SYNOPSIS
        # in dist.ini
-       [@MITHALDU] blah
+       [@MITHALDU]
 
 DESCRIPTION
     This module is forked off of Dist::Zilla::PluginBundle::DAGOLDEN and
