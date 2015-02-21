@@ -262,7 +262,7 @@ sub configure {
 
   # copy files from build back to root for inclusion in VCS
   [ CopyFilesFromBuild => {
-      map { ( copy => $_ ) } @generated_files
+      copy => \@generated_files
     }
   ],
 
