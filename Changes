@@ -2,6 +2,11 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+1.150590  2015-02-28 13:21:53+01:00 Europe/Berlin
+    - remove spelling test stuff
+    - Revert "use a readme plugin that actually generates a readme in the release"
+    - add a way to define prereq skipping options
+
 1.150521  2015-02-21 18:29:39+01:00 Europe/Berlin
     - i am actually an idiot
 
