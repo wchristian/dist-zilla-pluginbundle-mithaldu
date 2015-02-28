@@ -74,7 +74,6 @@ following dist.ini:
    fake_home = 1       ; fakes $ENV{HOME} just in case
  
    ; xt tests
-   [Test::PodSpelling] ; xt/author/pod-spell.t
    [Test::Perl::Critic]; xt/author/critic.t
    [MetaTests]         ; xt/release/meta-yaml.t
    [PodSyntaxTests]    ; xt/release/pod-syntax.t
@@ -148,9 +147,6 @@ following dist.ini:
    [Git::Push]         ; push repo to remote
    push_to = origin
 
-=for stopwords autoprereq mithaldu fakerelease pluginbundle podweaver
-taskweaver uploadtocpan dist ini
-
 =for Pod::Coverage configure mvp_multivalue_args old_meta
 
 =head1 USAGE
@@ -190,15 +186,7 @@ C<<< weaver_config >>> -- specifies a Pod::Weaver bundle.  Defaults to @MITHALDU
 
 =item *
 
-C<<< stopwords >>> -- add stopword for Test::PodSpelling (can be repeated)
-
-=item *
-
 C<<< no_critic >>> -- omit Test::Perl::Critic tests
-
-=item *
-
-C<<< no_spellcheck >>> -- omit Test::PodSpelling tests
 
 =item *
 

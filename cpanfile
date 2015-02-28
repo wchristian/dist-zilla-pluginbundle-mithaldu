@@ -21,7 +21,6 @@ requires "Dist::Zilla::Plugin::StaticVersion" => "0";
 requires "Dist::Zilla::Plugin::TaskWeaver" => "0.101620";
 requires "Dist::Zilla::Plugin::Test::Compile" => "0";
 requires "Dist::Zilla::Plugin::Test::Perl::Critic" => "0";
-requires "Dist::Zilla::Plugin::Test::PodSpelling" => "2.001002";
 requires "Dist::Zilla::Plugin::Test::Portability" => "0";
 requires "Dist::Zilla::Plugin::Test::Version" => "0";
 requires "Dist::Zilla::PluginBundle::Filter" => "0";
@@ -63,6 +62,5 @@ on 'develop' => sub {
   requires "Test::More" => "0";
   requires "Test::Pod" => "1.41";
   requires "Test::Pod::Coverage" => "1.08";
-  requires "Test::Spelling" => "0.12";
   requires "Test::Version" => "1";
 };

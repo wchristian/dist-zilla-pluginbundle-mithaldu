@@ -29,7 +29,6 @@ use Dist::Zilla::Plugin::MetaNoIndex ();
 use Dist::Zilla::Plugin::MetaProvides::Package 1.11044404 ();
 use Dist::Zilla::Plugin::MinimumPerl ();
 use Dist::Zilla::Plugin::OurPkgVersion 0.001008 ();
-use Dist::Zilla::Plugin::Test::PodSpelling 2.001002 ();
 use Dist::Zilla::Plugin::Test::Perl::Critic ();
 use Dist::Zilla::Plugin::PodWeaver ();
 use Dist::Zilla::Plugin::Test::Portability ();
@@ -47,16 +46,7 @@ use Dist::Zilla::App::Command::cover; # this is just here for the prereqs to
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-sub mvp_multivalue_args { qw/stopwords gitignore exclude_match skip_prereq/ }
-
-has stopwords => (
-  is      => 'ro',
-  isa     => 'ArrayRef',
-  lazy    => 1,
-  default => sub {
-    exists $_[0]->payload->{stopwords} ? $_[0]->payload->{stopwords} : []
-  },
-);
+sub mvp_multivalue_args { qw/gitignore exclude_match skip_prereq/ }
 
 has fake_release => (
   is      => 'ro',
@@ -66,12 +56,6 @@ has fake_release => (
 );
 
 has no_critic => (
-  is      => 'ro',
-  isa     => 'Bool',
-  default => 0,
-);
-
-has no_spellcheck => (
   is      => 'ro',
   isa     => 'Bool',
   default => 0,
@@ -251,7 +235,6 @@ sub configure {
     [ 'Test::Compile' => { fake_home => 1 } ],
 
   # generated xt/ tests
-    [ 'Test::PodSpelling' => (scalar @{$self->stopwords}) ? ({ stopwords => $self->stopwords }) : () ],
     'Test::Perl::Critic',
     'MetaTests',          # core
     'PodSyntaxTests',     # core
@@ -333,11 +316,6 @@ __PACKAGE__->meta->make_immutable;
 
 __END__
 
-
-=for stopwords
-autoprereq mithaldu fakerelease pluginbundle podweaver
-taskweaver uploadtocpan dist ini
-
 =for Pod::Coverage configure mvp_multivalue_args old_meta
 
 =begin wikidoc
@@ -408,7 +386,6 @@ following dist.ini:
   fake_home = 1       ; fakes $ENV{HOME} just in case
 
   ; xt tests
-  [Test::PodSpelling] ; xt/author/pod-spell.t
   [Test::Perl::Critic]; xt/author/critic.t
   [MetaTests]         ; xt/release/meta-yaml.t
   [PodSyntaxTests]    ; xt/release/pod-syntax.t
@@ -497,9 +474,7 @@ robust than just the version number when parsing versions
 * {fake_release} -- swaps FakeRelease for UploadToCPAN. Mostly useful for
 testing a dist.ini without risking a real release.
 * {weaver_config} -- specifies a Pod::Weaver bundle.  Defaults to @MITHALDU.
-* {stopwords} -- add stopword for Test::PodSpelling (can be repeated)
 * {no_critic} -- omit Test::Perl::Critic tests
-* {no_spellcheck} -- omit Test::PodSpelling tests
 * {gitignore} -- adds entries to be added to .gitignore (can be repeated)
 * {exclude_match} -- regexes to exclude files from the dist (can be repeated)
 * {prune_except} -- regexes to except files from being pruned as cruft (can
