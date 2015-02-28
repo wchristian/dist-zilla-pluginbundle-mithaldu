@@ -47,7 +47,7 @@ use Dist::Zilla::App::Command::cover; # this is just here for the prereqs to
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-sub mvp_multivalue_args { qw/stopwords gitignore exclude_match/ }
+sub mvp_multivalue_args { qw/stopwords gitignore exclude_match skip_prereq/ }
 
 has stopwords => (
   is      => 'ro',
@@ -149,6 +149,19 @@ has exclude_match => (
   },
 );
 
+has skip_prereq => (
+  is      => 'ro',
+  isa     => 'ArrayRef',
+  lazy    => 1,
+  default => sub {
+    my ($self) = @_;
+    my $payload = $_[0]->payload;
+    return [] if !exists $payload->{skip_prereq};
+    my $match = $payload->{skip_prereq};
+    return ref $match ? $match : [$match];
+  },
+);
+
 has prune_except => (
   is      => 'ro',
   isa     => 'ArrayRef',
@@ -242,7 +255,7 @@ sub configure {
 
   # metadata
     'MinimumPerl',
-    ( $self->auto_prereq ? 'AutoPrereqs' : () ),
+    ( $self->auto_prereq ? ['AutoPrereqs' => (scalar @{$self->skip_prereq}) ? ({ skip => $self->skip_prereq }) : ()] : () ),
     'CPANFile',
     [ GithubMeta => { remote => $self->git_remote, ( $is_release ? () : @{$old_github} ) } ],
     [ MetaNoIndex => {
