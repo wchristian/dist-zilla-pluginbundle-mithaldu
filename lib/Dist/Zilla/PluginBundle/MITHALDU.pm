@@ -213,7 +213,7 @@ sub configure {
   my $is_release = grep /^release$/, @ARGV;
   $version_provider = [ 'AutoVersion' => { major => $self->major_version } ] if $is_release;
 
-  my @generated_files = qw( META.json Makefile.PL cpanfile README );
+  my @generated_files = qw( META.json Makefile.PL cpanfile README.pod );
   my @on_release_files = ( qw/dist.ini Changes/, @generated_files );
 
   my @plugins = (
@@ -238,8 +238,14 @@ sub configure {
     ),
 
   # generated distribution files
-    'Pod2Readme',
+    'ReadmeFromPod',
     'License',            # core
+    [ ReadmeAnyFromPod => { # generate in root for github, etc.
+        type => 'pod',
+        filename => 'README.pod',
+        location => 'root',
+      }
+    ],
 
   # generated t/ tests
     [ 'Test::Compile' => { fake_home => 1 } ],
