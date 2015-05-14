@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - exclude_match needs to be an array with data or not passed on
 
 1.150590  2015-02-28 13:21:53+01:00 Europe/Berlin
     - remove spelling test stuff

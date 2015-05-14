@@ -208,7 +208,7 @@ sub configure {
   # gather and prune
     [ GatherDir => {
       exclude_filename => [@generated_files],
-      exclude_match => $self->exclude_match}
+      ( (scalar @{$self->exclude_match}) ? ('exclude_match' => $self->exclude_match) : () )}
     ], # core
     ['PruneCruft', { except => $self->prune_except }], # core
     'ManifestSkip',       # core
