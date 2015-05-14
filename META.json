@@ -5,7 +5,7 @@
       "Christian Walde <mithaldu@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.031, CPAN::Meta::Converter version 2.143240",
+   "generated_by" : "Dist::Zilla version 5.036, CPAN::Meta::Converter version 2.143240",
    "license" : [
       "unrestricted"
    ],
@@ -103,15 +103,15 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::MITHALDU" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU.pm",
-         "version" : "1.150590"
+         "version" : "1.151340"
       },
       "Dist::Zilla::PluginBundle::MITHALDU::Templates" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU/Templates.pm",
-         "version" : "1.150590"
+         "version" : "1.151340"
       },
       "Pod::Weaver::PluginBundle::MITHALDU" : {
          "file" : "lib/Pod/Weaver/PluginBundle/MITHALDU.pm",
-         "version" : "1.150590"
+         "version" : "1.151340"
       }
    },
    "release_status" : "stable",
@@ -127,6 +127,6 @@
          "web" : "https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu"
       }
    },
-   "version" : "1.150590"
+   "version" : "1.151340"
 }
 
