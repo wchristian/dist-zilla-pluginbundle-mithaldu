@@ -120,8 +120,7 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "mailto" : "bug-dist-zilla-pluginbundle-mithaldu at rt.cpan.org",
-         "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-MITHALDU"
+         "web" : "https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu/issues"
       },
       "homepage" : "https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu",
       "repository" : {

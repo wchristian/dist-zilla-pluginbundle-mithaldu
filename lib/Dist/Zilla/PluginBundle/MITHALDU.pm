@@ -247,14 +247,13 @@ sub configure {
     'MinimumPerl',
     ( $self->auto_prereq ? ['AutoPrereqs' => (scalar @{$self->skip_prereq}) ? ({ skip => $self->skip_prereq }) : ()] : () ),
     'CPANFile',
-    [ GithubMeta => { remote => $self->git_remote, ( $is_release ? () : @{$old_github} ) } ],
+    [ GithubMeta => { remote => $self->git_remote, ( $is_release ? () : @{$old_github} ), issues => 1 } ],
     [ MetaNoIndex => {
         directory => [qw/t xt examples corpus/],
         'package' => [qw/DB/]
       }
     ],
     ['MetaProvides::Package' => { meta_noindex => 1 } ], # AFTER MetaNoIndex
-    ['Bugtracker'],
     'MetaYAML',           # core
     'MetaJSON',           # core
 
