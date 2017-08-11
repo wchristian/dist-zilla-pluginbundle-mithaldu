@@ -106,15 +106,15 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::MITHALDU" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU.pm",
-         "version" : "1.151340"
+         "version" : "1.172230"
       },
       "Dist::Zilla::PluginBundle::MITHALDU::Templates" : {
          "file" : "lib/Dist/Zilla/PluginBundle/MITHALDU/Templates.pm",
-         "version" : "1.151340"
+         "version" : "1.172230"
       },
       "Pod::Weaver::PluginBundle::MITHALDU" : {
          "file" : "lib/Pod/Weaver/PluginBundle/MITHALDU.pm",
-         "version" : "1.151340"
+         "version" : "1.172230"
       }
    },
    "release_status" : "stable",
@@ -129,7 +129,7 @@
          "web" : "https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu"
       }
    },
-   "version" : "1.151340",
+   "version" : "1.172230",
    "x_contributors" : [
       "David Golden <dagolden@cpan.org>"
    ],
