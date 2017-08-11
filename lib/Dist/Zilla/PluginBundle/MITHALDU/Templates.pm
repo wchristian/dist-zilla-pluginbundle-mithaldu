@@ -109,3 +109,7 @@ You can learn more about Dist::Zilla at http://dzil.org/
 
 [TestingAndDebugging::RequireUseStrict]
 equivalent_modules = strictures
+
+[-OTRS::RequireCamelCase]
+[-OTRS::RequireParensWithMethods]
+[-ValuesAndExpressions::ProhibitAccessOfPrivateData]
