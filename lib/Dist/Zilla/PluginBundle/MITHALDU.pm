@@ -190,7 +190,7 @@ sub configure {
     source => "Dist::Zilla::PluginBundle::MITHALDU::Templates",
   );
 
-  my ( $old_version, $old_github ) = $self->old_meta;
+  my ( $old_version, $old_github, $meta ) = $self->old_meta;
 
   my $version_provider = ['StaticVersion' => { version => $old_version } ];
 
@@ -199,6 +199,7 @@ sub configure {
 
   my @generated_files = qw( META.json Makefile.PL cpanfile README.pod );
   my @on_release_files = ( qw/dist.ini Changes/, @generated_files );
+  my @exclude_match = ( '^' . $meta->{name} . '-', @{$self->exclude_match} );
 
   my @plugins = (
 
@@ -208,7 +209,7 @@ sub configure {
   # gather and prune
     [ GatherDir => {
       exclude_filename => [@generated_files],
-      ( (scalar @{$self->exclude_match}) ? ('exclude_match' => $self->exclude_match) : () )}
+      exclude_match => \@exclude_match}
     ], # core
     ['PruneCruft', { except => $self->prune_except }], # core
     'ManifestSkip',       # core
