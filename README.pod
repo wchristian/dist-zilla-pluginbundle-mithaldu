@@ -240,19 +240,15 @@ L<https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu>
 
   git clone https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu.git
 
-=head1 AUTHORS
+=head1 AUTHOR
 
-=over 4
+Christian Walde <walde.christian@gmail.com>
 
-=item *
+=head1 CONTRIBUTOR
+
+=for stopwords David Golden
 
 David Golden <dagolden@cpan.org>
-
-=item *
-
-Christian Walde <mithaldu@cpan.org>
-
-=back
 
 =head1 COPYRIGHT AND LICENSE
 

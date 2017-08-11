@@ -32,6 +32,7 @@ requires "Moose::Autobox" => "0";
 requires "Pod::Elemental::Transformer::List" => "0.101620";
 requires "Pod::Weaver::Config::Assembler" => "0";
 requires "Pod::Weaver::Plugin::WikiDoc" => "0";
+requires "Pod::Weaver::Section::Contributors" => "0";
 requires "Pod::Weaver::Section::Support" => "1.001";
 requires "Try::Tiny" => "0";
 requires "autodie" => "2.00";

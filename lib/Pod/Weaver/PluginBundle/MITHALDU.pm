@@ -9,6 +9,7 @@ use Pod::Weaver::Config::Assembler;
 use Pod::Weaver::Plugin::WikiDoc ();
 use Pod::Elemental::Transformer::List 0.101620 ();
 use Pod::Weaver::Section::Support 1.001 ();
+use Pod::Weaver::Section::Contributors ();
 
 sub _exp { Pod::Weaver::Config::Assembler->expand_package($_[0]) }
 
@@ -62,6 +63,7 @@ sub mvp_bundle_config {
       }
     ],
     [ '@MITHALDU/Authors',   _exp('Authors'),   {} ],
+    [ '@MITHALDU/Contributors', _exp('Contributors'), {} ],
     [ '@MITHALDU/Legal',     _exp('Legal'),     {} ],
     [ '@MITHALDU/List',      _exp('-Transformer'), { 'transformer' => 'List' } ],
   );

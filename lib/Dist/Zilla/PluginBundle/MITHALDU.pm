@@ -216,6 +216,7 @@ sub configure {
 
   # file munging
     'OurPkgVersion',
+    'Git::Contributors',
     'InsertCopyright',
     ( $self->is_task
       ?  'TaskWeaver'

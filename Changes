@@ -4,6 +4,7 @@ Revision history for {{$dist->name}}
     - remove need for manual gitignore and exclude entries
     - switch to github issues as default tracker
     - exclude problematic critic policies
+    - include contributors section
 
 1.151340  2015-05-14 10:55:34+02:00 Europe/Berlin
     - exclude_match needs to be an array with data or not passed on

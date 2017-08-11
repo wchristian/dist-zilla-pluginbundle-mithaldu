@@ -1,8 +1,7 @@
 {
    "abstract" : "Dist::Zilla configuration the way MITHALDU does it",
    "author" : [
-      "David Golden <dagolden@cpan.org>",
-      "Christian Walde <mithaldu@cpan.org>"
+      "Christian Walde <walde.christian@gmail.com>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Dist::Zilla version 6.010, CPAN::Meta::Converter version 2.150010",
@@ -80,6 +79,7 @@
             "Pod::Elemental::Transformer::List" : "0.101620",
             "Pod::Weaver::Config::Assembler" : "0",
             "Pod::Weaver::Plugin::WikiDoc" : "0",
+            "Pod::Weaver::Section::Contributors" : "0",
             "Pod::Weaver::Section::Support" : "1.001",
             "Try::Tiny" : "0",
             "autodie" : "2.00",
@@ -130,6 +130,9 @@
       }
    },
    "version" : "1.151340",
+   "x_contributors" : [
+      "David Golden <dagolden@cpan.org>"
+   ],
    "x_serialization_backend" : "Cpanel::JSON::XS version 3.0218"
 }
 

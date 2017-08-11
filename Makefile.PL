@@ -8,7 +8,7 @@ use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Dist::Zilla configuration the way MITHALDU does it",
-  "AUTHOR" => "David Golden <dagolden\@cpan.org>, Christian Walde <mithaldu\@cpan.org>",
+  "AUTHOR" => "Christian Walde <walde.christian\@gmail.com>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },
@@ -51,6 +51,7 @@ my %WriteMakefileArgs = (
     "Pod::Elemental::Transformer::List" => "0.101620",
     "Pod::Weaver::Config::Assembler" => 0,
     "Pod::Weaver::Plugin::WikiDoc" => 0,
+    "Pod::Weaver::Section::Contributors" => 0,
     "Pod::Weaver::Section::Support" => "1.001",
     "Try::Tiny" => 0,
     "autodie" => "2.00",
@@ -114,6 +115,7 @@ my %FallbackPrereqs = (
   "Pod::Elemental::Transformer::List" => "0.101620",
   "Pod::Weaver::Config::Assembler" => 0,
   "Pod::Weaver::Plugin::WikiDoc" => 0,
+  "Pod::Weaver::Section::Contributors" => 0,
   "Pod::Weaver::Section::Support" => "1.001",
   "Test::Exception" => "0.29",
   "Test::More" => "0.88",
