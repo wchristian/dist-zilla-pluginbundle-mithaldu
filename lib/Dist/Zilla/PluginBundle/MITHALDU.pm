@@ -197,7 +197,7 @@ sub configure {
   $version_provider = [ 'AutoVersion' => { major => $self->major_version } ] if $is_release;
 
   my @generated_files = qw( META.json Makefile.PL cpanfile );
-  my @on_release_files = ( qw/dist.ini Changes README.pod/, @generated_files );
+  my @on_release_files = ( qw/dist.ini Changes README.pod perlcritic.rc/, @generated_files );
   my @exclude_match = ( '^' . $meta->{name} . '-', @{$self->exclude_match} );
 
   my @plugins = (

@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - also allow perlcritic.rc as dirty on-release file
 
 1.190320  2019-02-01 21:43:33+01:00 Europe/Berlin
     - disable another critic policy
