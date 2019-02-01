@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
     - disable another critic policy
+    - generate both build and repo readme with ReadmeAnyFromPod
 
 1.172230  2017-08-11 14:07:34+02:00 Europe/Berlin
     - remove need for manual gitignore and exclude entries
