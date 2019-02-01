@@ -6,7 +6,7 @@ Dist::Zilla::PluginBundle::MITHALDU - Dist::Zilla configuration the way MITHALDU
 
 =head1 VERSION
 
-version 1.172230
+version 1.190320
 
 =head1 SYNOPSIS
 
@@ -47,8 +47,8 @@ following dist.ini:
  
    ; generated files
    [License]           ; boilerplate license
-   [ReadmeFromPod]     ; from Pod (runs after PodWeaver)
-   [ReadmeAnyFromPod]  ; create README.pod in repo directory
+   [ReadmeAnyFromPod]     ; from Pod (runs after PodWeaver)
+   [ReadmeAnyFromPod / ReadmePodInRoot]  ; create README.pod in repo directory
    type = pod
    filename = README.pod
    location = root
@@ -244,11 +244,21 @@ L<https://github.com/wchristian/dist-zilla-pluginbundle-mithaldu>
 
 Christian Walde <walde.christian@gmail.com>
 
-=head1 CONTRIBUTOR
+=head1 CONTRIBUTORS
 
-=for stopwords David Golden
+=for stopwords Christian Walde David Golden
+
+=over 4
+
+=item *
+
+Christian Walde <walde.christian@googlemail.com>
+
+=item *
 
 David Golden <dagolden@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
