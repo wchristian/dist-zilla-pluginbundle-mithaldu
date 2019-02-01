@@ -113,3 +113,4 @@ equivalent_modules = strictures
 [-OTRS::RequireCamelCase]
 [-OTRS::RequireParensWithMethods]
 [-ValuesAndExpressions::ProhibitAccessOfPrivateData]
+[-OTRS::ProhibitLowPrecedenceOps]
