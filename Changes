@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+1.190321  2019-02-01 21:54:06+01:00 Europe/Berlin
     - also allow perlcritic.rc as dirty on-release file
 
 1.190320  2019-02-01 21:43:33+01:00 Europe/Berlin
